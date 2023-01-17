@@ -3,11 +3,12 @@ import time
 
 """ 提示信息并延时 """
 def status(str, t=1):
-    print('\n' + str)
-    print('即将返回', end='')
-    for i in range(3, 0, -1):
-        print(i, end='')
-        time.sleep(t)
+    print('\n' + str + '即将返回')
+    # print('即将返回', end='')
+    # for i in range(3, 0, -1):
+    #     print(i, end='')
+    #     time.sleep(t)
+    time.sleep(t * 3)
     print('\n')
 
 
