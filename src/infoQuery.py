@@ -1,3 +1,4 @@
+# encoding=utf-8
 # 创建时间：2023-01-15 22:39
 import os
 import errors
@@ -89,7 +90,10 @@ def search():
             print('查找成功')
             showStudent(resList)
         else:
-            print(f'\n数据文件内没有id为{str(studentId)}的学生\n')
+            # 不到为啥，linux中过不了编译，win可以
+            # print(f'\n数据文件内没有id为{str(studentId)}的学生\n')
+            # 这样写又可以
+            print('\n数据文件内没有id为{0}的学生\n'.format(studentId))
 
         # 是否继续删除
         flag = 0
@@ -118,7 +122,7 @@ def total():
                 # 文件为空
                 errors.fileIsEmpty()
             else:
-                print(f'\n一共有{len(studentList)}名学生的信息')
+                print('\n一共有{0}名学生的信息'.format(len(studentList)))
                 input('按任意键继续...')
     else:
         errors.noFile()

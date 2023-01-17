@@ -1,3 +1,4 @@
+# encoding=utf-8
 # 创建时间：2023-01-15 20:29
 import os
 import errors
@@ -9,7 +10,7 @@ filename = 'data.txt'
 
 """ 录入信息 """
 def insert():
-    student_list = []
+    # student_list = []
     while 1:
         stu = getStudent()
         # 查看id是否重复
@@ -26,7 +27,8 @@ def insert():
                     print('id已经存在，请更换id')
                     continue
         # 添加一个学生
-        student_list.append(stu)
+        # student_list.append(stu)
+        sava(stu)
 
         # 是否继续添加y/n
         flag = 0
@@ -43,7 +45,6 @@ def insert():
             break
         else:
             continue
-    sava(student_list)
 
 
 """ 删除学生信息 """
@@ -92,9 +93,9 @@ def delete():
                 else:
                     flag = True
         if flag:
-            print(f'\nid为{str(studentId)}的学生信息已经被删除了\n')
+            print('\nid为{0}的学生信息已经被删除了\n'.format(studentId))
         else:
-            print(f'\n数据文件内没有id为{str(studentId)}的学生\n')
+            print('\n数据文件内没有id为{0}的学生\n'.format(studentId))
 
         # 操作完成后显示所有学生的信息
         infoQuery.show()
@@ -161,13 +162,13 @@ def modify():
                     datafile.write(str(student) + '\n')
                 else:
                     flag = True
-                    print(f'\n存在id为{str(studentId)}的学生，可以进行修改')
+                    print('\n存在id为{0}的学生，可以进行修改'.format(studentId))
                     datafile.write(str(getStudent()) + '\n')
 
         if flag:
-            print(f'\nid为{str(studentId)}的学生信息已经被修改了\n')
+            print('\nid为{0}的学生信息已经被修改了\n'.format(studentId))
         else:
-            print(f'\n数据文件内没有id为{str(studentId)}的学生\n')
+            print('\n数据文件内没有id为{0}的学生\n'.format(studentId))
 
         # 操作完成后显示所有学生的信息
         infoQuery.show()
@@ -195,14 +196,13 @@ def isNumLegal(a, b, num):
     return True
 
 # 保存学生信息到文件
-def sava(lst):
+def sava(stu):
     try:
         datafile = open(filename, 'a', encoding='utf-8')
     except:
         # 文件不存在的话
         datafile = open(filename, 'w', encoding='utf-8')
-    for item in lst:
-        datafile.write(str(item) + '\n')
+    datafile.write(str(stu) + '\n')
     datafile.close()
     errors.status('文件已录入!!!', 0.5)
 
