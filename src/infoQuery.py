@@ -41,7 +41,7 @@ def show():
     else:
         print('\n没有学生信息')
         # errors.noFile()
-    input('按任意键继续...')
+    input('任意输入继续...')
 
 
 """ 查询学生信息 """
@@ -123,7 +123,7 @@ def total():
                 errors.fileIsEmpty()
             else:
                 print('\n一共有{0}名学生的信息'.format(len(studentList)))
-                input('按任意键继续...')
+                input('任意输入继续...')
     else:
         errors.noFile()
     # 文件存在，且信息在studentList列表中
