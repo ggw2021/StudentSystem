@@ -7,7 +7,7 @@ import infoMag
 def main():
     while 1:
         infoQuery.menu()  # 功能菜单
-        print('选择功能请输入0-7')
+        print('选择功能请输入0-6')
         choice = input('请选择: ')
         # ------------------------------------------
         if choice == '0':
