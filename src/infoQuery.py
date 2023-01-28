@@ -2,6 +2,7 @@
 # 创建时间：2023-01-15 22:39
 import os
 import errors
+import prettytable as pt
 
 """ 学生数据文件 """
 filename = 'data.txt'
@@ -132,15 +133,23 @@ def total():
 # =======================================
 # 显示一个学生的信息
 def showStudent(lst):
-    format_title = '{:^6}\t{:^12}\t{:^8}\t{:^10}\t{:^10}\t{:^8}'
-    print(format_title.format('ID', '姓名', 'English成绩', 'Python成绩', 'Java成绩', '总成绩'))
-    format_data = '{:^6}\t{:^12}\t{:^8}\t{:^10}\t{:^10}\t{:^8}'
+    table = pt.PrettyTable()    # 创建对象
+    table.field_names = ['ID', '姓名', 'English成绩', 'Python成绩', 'Java成绩', '总成绩']  # 设定表头
     for item in lst:
-        print(format_data.format(item['id'],\
-                                 item['name'],\
-                                 item['English'],\
-                                 item['Python'],\
-                                 item['Java'],\
-                                 int(item['English']) + int(item['Python']) + int(item['Java'])))
+        stuInfo = list(item.values())
+        resSum = int(item['English']) + int(item['Python']) + int(item['Java'])
+        stuInfo.append(resSum)
+        table.add_row(stuInfo)
+    print(table)
+    # format_title = '{:^6}\t{:^12}\t{:^8}\t{:^10}\t{:^10}\t{:^8}'
+    # print(format_title.format('ID', '姓名', 'English成绩', 'Python成绩', 'Java成绩', '总成绩'))
+    # format_data = '{:^6}\t{:^12}\t{:^8}\t{:^10}\t{:^10}\t{:^8}'
+    # for item in lst:
+    #     print(format_data.format(item['id'],\
+    #                              item['name'],\
+    #                              item['English'],\
+    #                              item['Python'],\
+    #                              item['Java'],\
+    #                              int(item['English']) + int(item['Python']) + int(item['Java'])))
 # =======================================
 
